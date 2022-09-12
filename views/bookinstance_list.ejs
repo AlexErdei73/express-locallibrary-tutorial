@@ -1,0 +1,12 @@
+<%- include("_header") %>
+<h1><%= title %></h1>
+<ul>
+  <% if (bookinstance_list.length > 0) {bookinstance_list.forEach((copy) => { %>
+  <li>
+    <a href="<%= copy.url %>"><%= copy.book.title %> : <%= copy.imprint %></a>
+  </li>
+  <% })} else { %>
+  <li>There are no book copies in this library.</li>
+  <% } %>
+</ul>
+<%- include("_footer") %>
