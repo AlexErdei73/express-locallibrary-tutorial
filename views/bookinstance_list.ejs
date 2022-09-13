@@ -11,7 +11,7 @@
 		<% } else { %>
 		<span class="text-warning"><%= copy.status %></span>
 		<% } if (copy.status !== "Available") { %>
-		<span>(Due: <%= copy.due_back %> )</span>
+		<span>(Due: <%= copy.due_back_formatted %> )</span>
 		<% } %>
 	</li>
 	<% })} else { %>
