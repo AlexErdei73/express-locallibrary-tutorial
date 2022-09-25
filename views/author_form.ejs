@@ -1,0 +1,48 @@
+<%- include("_header") %>
+<h1><%= title %></h1>
+<form action="" method="POST">
+  <div class="form-group">
+    <label for="first_name" class="form-label">First Name:</label>
+    <input
+      type="text"
+      id="first_name"
+      class="form-control"
+      placeholder="First Name (Christian)"
+      name="first_name"
+      required
+      value="<% (author === undefined) ? '' : author.first_name %>"
+    />
+    <label for="family_name" class="form-label">Family Name:</label>
+    <input
+      type="text"
+      id="family_name"
+      class="form-control"
+      placeholder="Family Name (Surename)"
+      name="family_name"
+      required
+      value="<% (author === undefined) ? '' : author.family_name %>"
+    />
+  </div>
+  <div class="form-group">
+    <label for="date_of_birth" class="form-label">Date Of Birth:</label>
+    <input
+      type="date"
+      id="date_of_birth"
+      class="form-control"
+      placeholder="dd/mm/yyyy"
+      name="date_of_birth"
+      value="<% (author === undefined) ? '' : author.date_of_birth %>"
+    />
+    <label for="date_of_death" class="form-label">Date Of Death:</label>
+    <input
+      type="date"
+      id="date_of_death"
+      class="form-control"
+      placeholder="dd/mm/yyyy"
+      name="date_of_death"
+      value="<% (author === undefined) ? '' : author.date_of_death %>"
+    />
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+<%- include("_footer") %>

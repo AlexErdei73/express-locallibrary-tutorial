@@ -1,23 +1,24 @@
 <%- include("_header") %>
 <h1><%= title %></h1>
-<form method="POST" action="">
-	<div class="mb-3">
-		<label for="name" class="form-label">Genre:</label>
-		<% let val = ""; if (genre) { val = genre.name } %>
-		<input
-			type="text"
-			placeholder="Fantasy, Poetry, etc."
-			name="name"
-			class="form-control"
-			value="<%= val %> "
-		/>
-	</div>
-	<button type="submit" class="btn btn-primary">Submit</button>
+<form method="POST" action="" class="">
+  <div class="mb-3">
+    <label for="name" class="form-label">Genre:</label>
+    <% let val = ""; if (genre) { val = genre.name } %>
+    <input
+      type="text"
+      placeholder="Fantasy, Poetry, etc."
+      name="name"
+      class="form-control"
+      value="<%= val %>"
+      required
+    />
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
 </form>
 <% if (errors) { %>
 <ul>
-	<% errors.forEach(error => { %>
-	<li><%= error.msg %></li>
-	<% }) %>
+  <% errors.forEach(error => { %>
+  <li><%= error.msg %></li>
+  <% }) %>
 </ul>
 <% } %> <%- include("_footer") %>
