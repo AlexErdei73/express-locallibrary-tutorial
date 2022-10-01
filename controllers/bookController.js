@@ -214,6 +214,9 @@ exports.book_delete_get = (req, res, next) => {
       if (err) {
         return next(err);
       }
+      if (results.book === null) {
+        res.redirect("/catalog/books");
+      }
       res.render("book_delete", {
         title: "Delete book",
         book: results.book,
