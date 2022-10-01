@@ -1,35 +1,37 @@
 <%- include("_header") %>
 <h1><%= book.title %></h1>
 <p>
-	<strong>Author:</strong
-	><a href="<%= book.author.url %>"><%= book.author.name %></a>
+  <strong>Author:</strong
+  ><a href="<%= book.author.url %>"><%= book.author.name %></a>
 </p>
 <p><strong>Summary:</strong><%= book.summary %></p>
 <p><strong>ISBN:</strong><%= book.isbn %></p>
 <p>
-	<strong>Genre:</strong>
-	<% book.genre.forEach((val, index) => { %>
-	<a href="<%= val.url %>"><%= val.name %></a>
-	<% if (book.genre.length - 1 > index) { %>,<% } %> <% }) %>
+  <strong>Genre:</strong>
+  <% book.genre.forEach((val, index) => { %>
+  <a href="<%= val.url %>"><%= val.name %></a>
+  <% if (book.genre.length - 1 > index) { %>,<% } %> <% }) %>
 </p>
 <div style="margin: 20px 0 0 20px">
-	<h4>Copies</h4>
-	<% if (book_instances.length > 0) { book_instances.forEach((copy) => { %>
-	<hr />
-	<% if (copy.status === "Available") { %>
-	<p class="text-success"><%= copy.status %></p>
-	<% } else if (copy.status === "Maintenance") { %>
-	<p class="text-danger"><%= copy.status %></p>
-	<% } else { %>
-	<p class="text-warning"><%= copy.status %></p>
-	<% } %>
-	<p><strong>Imprint:</strong><%= copy.imprint %></p>
-	<% if (copy.status !== "Available") { %>
-	<p><strong>Due back:</strong><%= copy.due_back_formatted %></p>
-	<% } %>
-	<p><strong>Id:</strong><%= copy._id %></p>
-	<% })} else { %>
-	<p>There are no copie of this book in the library</p>
-	<% } %>
+  <h4>Copies</h4>
+  <% if (book_instances.length > 0) { book_instances.forEach((copy) => { %>
+  <hr />
+  <% if (copy.status === "Available") { %>
+  <p class="text-success"><%= copy.status %></p>
+  <% } else if (copy.status === "Maintenance") { %>
+  <p class="text-danger"><%= copy.status %></p>
+  <% } else { %>
+  <p class="text-warning"><%= copy.status %></p>
+  <% } %>
+  <p><strong>Imprint:</strong><%= copy.imprint %></p>
+  <% if (copy.status !== "Available") { %>
+  <p><strong>Due back:</strong><%= copy.due_back_formatted %></p>
+  <% } %>
+  <p><strong>Id:</strong><%= copy._id %></p>
+  <% })} else { %>
+  <p>There are no copie of this book in the library</p>
+  <% } %>
 </div>
+<hr />
+<p><a href="<%= book.url %>/delete">Delete book</a></p>
 <%- include("_footer") %>
