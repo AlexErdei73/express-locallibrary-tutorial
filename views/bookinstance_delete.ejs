@@ -1,0 +1,21 @@
+<%- include("_header") %>
+
+<h1><%= title %> ID:</h1>
+<h1><%= bookinstance._id %></h1>
+<p><strong>Title:</strong><%= bookinstance.book.title %></p>
+<p><strong>Imprint:</strong><%= bookinstance.imprint %></p>
+<p>Do you really want to delete the bookinstance?</p>
+<form action="" method="POST">
+	<div class="form-group">
+		<input
+			type="hidden"
+			name="bookinstanceid"
+			id="bookinstanceid"
+			value="<%= bookinstance._id %>"
+			required
+			class="form-control"
+		/>
+	</div>
+	<button type="submit" class="btn btn-primary">Delete</button>
+</form>
+<%- include("_footer") %>
