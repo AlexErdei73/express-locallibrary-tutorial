@@ -45,10 +45,4 @@
 	</div>
 	<button type="submit" class="btn btn-primary">Submit</button>
 </form>
-<% if (errors) { %>
-<ul>
-	<% errors.forEach(function(error) { %>
-	<li><%= error.msg %></li>
-	<% }) %>
-</ul>
-<% } %> <%- include("_footer") %>
+<%- include("_formerrors") %> <%- include("_footer") %>
