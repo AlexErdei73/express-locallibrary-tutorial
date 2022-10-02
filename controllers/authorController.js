@@ -232,19 +232,7 @@ exports.author_update_post = [
 	(req, res, next) => {
 		// Extract the validation errors from a request.
 		const errors = validationResult(req);
-
-		if (!errors.isEmpty()) {
-			// There are errors. Render form again with sanitized values/errors messages.
-			res.render("author_form", {
-				title: "Update Author",
-				author: req.body,
-				errors: errors.array(),
-			});
-			return;
-		}
-		// Data from form is valid.
-
-		// Create an Author object with escaped and trimmed data.
+		// Create author object with the trimmed and escaped data
 		const author = new Author({
 			first_name: req.body.first_name,
 			family_name: req.body.family_name,
@@ -252,6 +240,18 @@ exports.author_update_post = [
 			date_of_death: req.body.date_of_death,
 			_id: req.params.id,
 		});
+
+		if (!errors.isEmpty()) {
+			// There are errors. Render form again with sanitized values/errors messages.
+			res.render("author_form", {
+				title: "Update Author",
+				author: author,
+				errors: errors.array(),
+			});
+			return;
+		}
+		// Data from form is valid.
+
 		Author.findByIdAndUpdate(req.params.id, author, {}, (err, theauthor) => {
 			if (err) {
 				return next(err);
